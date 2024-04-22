@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy CORS</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        // URL del recurso al que deseas acceder (con CORS habilitado)
+        const originalUrl = 'https://infinitystream.great-site.net/stream.php?id=axn';
+        const url = 'https://corsproxy.io/?' + encodeURIComponent(originalUrl);
+
+        // Realizar una solicitud GET al recurso a través de un proxy CORS
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                // Manipular la respuesta recibida
+                document.getElementById('result').textContent = data;
+            })
+            .catch(error => {
+                // Manejar errores
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+    </script>
+</body>
+</html>
