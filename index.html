@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxy CORS</title>
+    <title>Descargando Playlist</title>
 </head>
 <body>
-    <button id="downloadButton">Descargar Playlist</button>
 
     <script>
         // URL del recurso al que deseas acceder (con CORS habilitado)
@@ -26,10 +25,8 @@
                 const blob = new Blob([data], { type: 'application/x-mpegURL' });
                 const url = URL.createObjectURL(blob);
                 
-                // Crear un enlace de descarga
-                const downloadButton = document.getElementById('downloadButton');
-                downloadButton.href = url;
-                downloadButton.download = 'playlist.m3u8';
+                // Redirigir la página para iniciar la descarga automáticamente
+                window.location.href = url;
             })
             .catch(error => {
                 // Manejar errores
