@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reproducir en VLC</title>
+    <title>Descarga automática</title>
 </head>
 <body>
-    <h1>Descargar contenido</h1>
-    <p>Para descargar el contenido, haz clic en el siguiente enlace:</p>
-    <a href="https://corsproxy.io/?https://infinitystream.great-site.net/stream.php?id=axn" download>Descargar contenido</a>
+    <script>
+        // Crear un enlace oculto
+        var link = document.createElement('a');
+        link.style.display = 'none';
+        document.body.appendChild(link);
+
+        // Configurar la URL del archivo a descargar
+        link.href = 'https://corsproxy.io/?https://infinitystream.great-site.net/stream.php?id=axn';
+
+        // Forzar la descarga automática
+        link.setAttribute('download', '');
+        link.click();
+    </script>
 </body>
 </html>
