@@ -8,10 +8,10 @@
 <body>
 
 <script>
-  // Función para obtener el valor del parámetro 'url' de la URL
-  function obtenerURLParametro(nombre) {
-    var urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(nombre);
+  // Función para obtener la URL de la ruta
+  function obtenerURLDeRuta() {
+    var ruta = window.location.pathname;
+    return ruta.substring(1); // Eliminar el primer carácter que es '/'
   }
 
   // Función para hacer una solicitud CORS a una URL específica y descargar el archivo
@@ -25,10 +25,10 @@
     document.body.removeChild(link);
   }
 
-  // Obtener la URL del parámetro 'url' de la URL actual y descargar el archivo
-  var urlParam = obtenerURLParametro('url');
-  if (urlParam) {
-    descargarArchivoDesdeURL(urlParam);
+  // Obtener la URL de la ruta y descargar el archivo
+  var url = obtenerURLDeRuta();
+  if (url) {
+    descargarArchivoDesdeURL(url);
   } else {
     alert("No se ha especificado ninguna URL.");
   }
