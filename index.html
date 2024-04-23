@@ -1,38 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Proxy CORS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproducir en VLC</title>
 </head>
 <body>
-
-<script>
-  // Función para obtener la URL de la ruta
-  function obtenerURLDeRuta() {
-    var ruta = window.location.pathname;
-    return ruta.substring(1); // Eliminar el primer carácter que es '/'
-  }
-
-  // Función para hacer una solicitud CORS a una URL específica y descargar el archivo
-  function descargarArchivoDesdeURL(url) {
-    var link = document.createElement('a');
-    link.href = url;
-    link.target = '_blank';
-    link.download = ''; // Puedes establecer aquí el nombre de archivo deseado si es necesario
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
-  // Obtener la URL de la ruta y descargar el archivo
-  var url = obtenerURLDeRuta();
-  if (url) {
-    descargarArchivoDesdeURL(url);
-  } else {
-    alert("No se ha especificado ninguna URL.");
-  }
-</script>
-
+    <h1>Descargar contenido</h1>
+    <p>Para descargar el contenido, haz clic en el siguiente enlace:</p>
+    <a href="https://corsproxy.io/?https://infinitystream.great-site.net/stream.php?id=axn" download>Descargar contenido</a>
 </body>
 </html>
