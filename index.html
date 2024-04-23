@@ -14,27 +14,23 @@
     return urlParams.get(nombre);
   }
 
-  // Función para hacer una solicitud CORS a una URL específica
-  function hacerSolicitudCORS(url, callback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        callback(xhr.responseText);
-      }
-    };
-    xhr.send();
+  // Función para hacer una solicitud CORS a una URL específica y descargar el archivo
+  function descargarArchivoDesdeURL(url) {
+    var link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.download = ''; // Puedes establecer aquí el nombre de archivo deseado si es necesario
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 
-  // Obtener la URL del parámetro 'url' de la URL actual y hacer la solicitud CORS
+  // Obtener la URL del parámetro 'url' de la URL actual y descargar el archivo
   var urlParam = obtenerURLParametro('url');
   if (urlParam) {
-    hacerSolicitudCORS(urlParam, function(resultado) {
-      // Devolver el resultado como texto
-      document.write(resultado);
-    });
+    descargarArchivoDesdeURL(urlParam);
   } else {
-    document.write("No se ha especificado ninguna URL.");
+    alert("No se ha especificado ninguna URL.");
   }
 </script>
 
