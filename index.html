@@ -7,8 +7,6 @@
 </head>
 <body>
 
-<div id="resultado"></div>
-
 <script>
   // Función para obtener el valor del parámetro 'url' de la URL
   function obtenerURLParametro(nombre) {
@@ -17,29 +15,26 @@
   }
 
   // Función para hacer una solicitud CORS a una URL específica
-  function hacerSolicitudCORS(url) {
+  function hacerSolicitudCORS(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        mostrarResultado(xhr.responseText);
+        callback(xhr.responseText);
       }
     };
     xhr.send();
   }
 
-  // Función para mostrar el resultado de la solicitud en la página
-  function mostrarResultado(resultado) {
-    var resultadoDiv = document.getElementById("resultado");
-    resultadoDiv.innerHTML = resultado;
-  }
-
   // Obtener la URL del parámetro 'url' de la URL actual y hacer la solicitud CORS
   var urlParam = obtenerURLParametro('url');
   if (urlParam) {
-    hacerSolicitudCORS(urlParam);
+    hacerSolicitudCORS(urlParam, function(resultado) {
+      // Devolver el resultado como texto
+      document.write(resultado);
+    });
   } else {
-    mostrarResultado("No se ha especificado ninguna URL.");
+    document.write("No se ha especificado ninguna URL.");
   }
 </script>
 
